@@ -1,0 +1,28 @@
+<project name="TaskFist" default="main" basedir=".">
+	<property name="source.dir" location="src" />
+	<property name="build.dir" location="bin" />
+	<property name="doc.dir" location="doc" />
+
+	<path id="junit.class.path">
+		<pathelement location="lib/junit-4.12.jar" />
+		<pathelement location="lib/hamcrest-core-1.3.jar" />
+		<pathelement location="${build.dir}" />
+	</path>
+
+
+	<target name="init" description="cria directories">
+		<mkdir dir="${doc.dir}" />
+	</target>
+
+	<target name="compile" description="compilando java sources">
+		<javac srcdir="${source.dir}" destdir="${build.dir}"
+			includeantruntime="false">
+			<classpath refid="junit.class.path" />
+		</javac>
+	</target>
+
+	<target name="main" depends="init, compile">
+		<description> Main Target</description>
+	</target>
+
+</project>
